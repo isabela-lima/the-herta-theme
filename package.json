@@ -1,0 +1,37 @@
+{
+  "name": "the-herta-theme",
+  "displayName": "The Herta Theme",
+  "type": "module",
+  "description": "A Honkai: Star Rail inspired theme based on The Herta",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isabela-lima/the-herta-theme.git"
+  },
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "The Herta Theme",
+        "uiTheme": "vs-dark",
+        "path": "./themes/The Herta Theme-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "ts-node build-theme.ts",
+    "dev": "nodemon --watch build-theme.ts --exec \"npm run build\""
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "@types/vscode": "^1.102.0",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
