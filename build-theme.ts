@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Paleta Semântica para o tema DARK
 const darkPalette = {
   backgroundPrimary: "#1a1823", // Fundo principal do editor
   backgroundSecondary: "#161420", // Fundos de painéis, abas ativas
@@ -24,7 +23,6 @@ const darkPalette = {
   warning: "#feca57", // Amarelo para avisos
 };
 
-// Paleta Semântica para o tema LIGHT
 const lightPalette = {
   backgroundPrimary: "#f0f2f8",
   backgroundSecondary: "#e6eaf2",
@@ -173,6 +171,41 @@ function generateTheme(
       "gitDecoration.untrackedResourceForeground": palette.gitAdded,
       "gitDecoration.conflictingResourceForeground": palette.warning,
       "gitDecoration.ignoredResourceForeground": palette.textDisabled,
+
+      // --- OUTROS ---
+      "rainbow-csv.column_1": palette.textPrimary,
+      "rainbow-csv.column_2": palette.accent2,
+      "rainbow-csv.column_3": palette.accent1,
+      "rainbow-csv.column_4": palette.accent3,
+      "rainbow-csv.column_5": palette.textSecondary,
+      "rainbow-csv.column_6": palette.accent2,
+      "rainbow-csv.column_7": palette.accent1,
+      "rainbow-csv.column_8": palette.accent3,
+      "rainbow-csv.comment": palette.textDisabled,
+      "rainbow-csv.quoted": palette.textSecondary,
+
+      // --- INTEGRAÇÃO COM JUPYTER NOTEBOOKS ---
+
+      // Fundo geral do notebook, atrás das células
+      "notebook.editorBackground": palette.backgroundPrimary,
+
+      // Estilo das Células
+      "notebook.cellEditorBackground": palette.backgroundSecondary, // Fundo da área de código da célula
+      "notebook.cellBorderColor": palette.border, // Borda entre as células
+      "notebook.focusedCellBorder": palette.accent2, // Borda ciano na célula em foco
+      "notebook.selectedCellBorder": palette.accent1, // Borda roxa para células selecionadas
+
+      // Barra de Status da Célula (onde mostra o tempo de execução)
+      "notebook.cellStatusBarItemHoverBackground": palette.backgroundTertiary,
+
+      // Saídas (Outputs)
+      "notebook.outputContainerBackgroundColor": palette.backgroundSecondary, // Fundo da caixa de saída
+      "notebook.outputContainerBorderColor": palette.border,
+
+      // Ícones de Status
+      "notebookStatusSuccessIcon.foreground": palette.gitAdded, // Verde
+      "notebookStatusErrorIcon.foreground": palette.error, // Vermelho
+      "notebookStatusRunningIcon.foreground": palette.warning, // Amarelo
     },
     tokenColors: [
       {
@@ -306,12 +339,27 @@ function generateTheme(
         ],
         settings: { foreground: palette.accent3 },
       },
+      {
+        name: "Jupyter Magic Commands",
+        scope: "keyword.control.ipython",
+        settings: {
+          foreground: "#c5a5ff",
+          fontStyle: "italic",
+        },
+      },
+      {
+        name: "Jupyter Notebook Comments",
+        scope: "comment.line.number-sign.python",
+        settings: {
+          foreground: palette.accent2,
+          fontStyle: "italic",
+        },
+      },
     ],
   };
   return theme;
 }
 
-// --- LÓGICA DE BUILD ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

@@ -612,6 +612,29 @@ interface WorkbenchColors {
   "widget.shadow"?: string;
   "window.activeBorder"?: string;
   "window.inactiveBorder"?: string;
+  "rainbow-csv.column_1"?: string;
+  "rainbow-csv.column_2"?: string;
+  "rainbow-csv.column_3"?: string;
+  "rainbow-csv.column_4"?: string;
+  "rainbow-csv.column_5"?: string;
+  "rainbow-csv.column_6"?: string;
+  "rainbow-csv.column_7"?: string;
+  "rainbow-csv.column_8"?: string;
+  "rainbow-csv.comment"?: string;
+  "rainbow-csv.quoted"?: string;
+
+  // --- Cores para Jupyter Notebooks ---
+  "notebook.editorBackground"?: string;
+  "notebook.cellEditorBackground"?: string;
+  "notebook.cellBorderColor"?: string;
+  "notebook.focusedCellBorder"?: string;
+  "notebook.selectedCellBorder"?: string;
+  "notebook.cellStatusBarItemHoverBackground"?: string;
+  "notebook.outputContainerBackgroundColor"?: string;
+  "notebook.outputContainerBorderColor"?: string;
+  "notebookStatusSuccessIcon.foreground"?: string;
+  "notebookStatusErrorIcon.foreground"?: string;
+  "notebookStatusRunningIcon.foreground"?: string;
 }
 
 interface ColorTheme {

@@ -102,7 +102,28 @@
     "gitDecoration.deletedResourceForeground": "#e84393",
     "gitDecoration.untrackedResourceForeground": "#16a085",
     "gitDecoration.conflictingResourceForeground": "#f39c12",
-    "gitDecoration.ignoredResourceForeground": "#95a5a6"
+    "gitDecoration.ignoredResourceForeground": "#95a5a6",
+    "rainbow-csv.column_1": "#2c3e50",
+    "rainbow-csv.column_2": "#00a8a8",
+    "rainbow-csv.column_3": "#8c7ae6",
+    "rainbow-csv.column_4": "#e84393",
+    "rainbow-csv.column_5": "#7f8c8d",
+    "rainbow-csv.column_6": "#00a8a8",
+    "rainbow-csv.column_7": "#8c7ae6",
+    "rainbow-csv.column_8": "#e84393",
+    "rainbow-csv.comment": "#95a5a6",
+    "rainbow-csv.quoted": "#7f8c8d",
+    "notebook.editorBackground": "#f0f2f8",
+    "notebook.cellEditorBackground": "#e6eaf2",
+    "notebook.cellBorderColor": "#dce1ea",
+    "notebook.focusedCellBorder": "#00a8a8",
+    "notebook.selectedCellBorder": "#8c7ae6",
+    "notebook.cellStatusBarItemHoverBackground": "#dce1ea",
+    "notebook.outputContainerBackgroundColor": "#e6eaf2",
+    "notebook.outputContainerBorderColor": "#dce1ea",
+    "notebookStatusSuccessIcon.foreground": "#16a085",
+    "notebookStatusErrorIcon.foreground": "#c0392b",
+    "notebookStatusRunningIcon.foreground": "#f39c12"
   },
   "tokenColors": [
     {
@@ -311,6 +332,22 @@
       ],
       "settings": {
         "foreground": "#e84393"
+      }
+    },
+    {
+      "name": "Jupyter Magic Commands",
+      "scope": "keyword.control.ipython",
+      "settings": {
+        "foreground": "#c5a5ff",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Jupyter Notebook Comments",
+      "scope": "comment.line.number-sign.python",
+      "settings": {
+        "foreground": "#00a8a8",
+        "fontStyle": "italic"
       }
     }
   ]
