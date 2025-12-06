@@ -13,11 +13,11 @@ const darkPalette = {
   textDisabled: "#5a528a", // Texto bem apagado, comentários, pontuação
 
   accent1: "#a29bfe", // Roxo Herta - Destaque principal
-  accent2: "#81ecec", // Ciano Holográfico - Destaque secundário
+  accent2: "#7dd3fc", // Azul puro (menos verde) - Destaque secundário
   accent3: "#e84393", // Magenta Kururin (suave) - Destaque terciário
 
   gitAdded: "#55efc4", // Verde para Git
-  gitModified: "#81ecec", // Ciano para Git
+  gitModified: "#7dd3fc", // Azul para Git
   gitDeleted: "#e84393", // Magenta para Git
   error: "#ff6b81", // Vermelho para erros
   warning: "#feca57", // Amarelo para avisos
@@ -34,14 +34,50 @@ const lightPalette = {
   textDisabled: "#95a5a6",
 
   accent1: "#8c7ae6", // Roxo Herta (versão light)
-  accent2: "#00a8a8", // Ciano (versão light)
+  accent2: "#0ea5e9", // Azul puro (menos verde) - versão light
   accent3: "#e84393", // Magenta (versão light)
 
   gitAdded: "#16a085",
-  gitModified: "#00a8a8",
+  gitModified: "#0ea5e9", // Azul para Git
   gitDeleted: "#e84393",
   error: "#c0392b",
   warning: "#f39c12",
+};
+
+const pastelDarkPalette = {
+  backgroundPrimary: "#2a2833",
+  backgroundSecondary: "#2a2839",
+  backgroundTertiary: "#3a3849",
+  border: "#2a2839",
+  textPrimary: "#e5e0ff",
+  textSecondary: "#9a98aa",
+  textDisabled: "#6a688a",
+  accent1: "#b8b2ff",
+  accent2: "#9dd5f5", // Azul puro (menos verde) - pastel
+  accent3: "#f5a8c8",
+  gitAdded: "#75ffd4",
+  gitModified: "#9dd5f5", // Azul para Git
+  gitDeleted: "#f5a8c8",
+  error: "#ff8ba1",
+  warning: "#fed977",
+};
+
+const pastelLightPalette = {
+  backgroundPrimary: "#f5f7fb",
+  backgroundSecondary: "#eef1f7",
+  backgroundTertiary: "#e8ecf3",
+  border: "#e8ecf3",
+  textPrimary: "#3c4e60",
+  textSecondary: "#8f9d9e",
+  textDisabled: "#a5b5b6",
+  accent1: "#9c8af6",
+  accent2: "#38bdf8", // Azul puro (menos verde) - pastel light
+  accent3: "#f5a8c8",
+  gitAdded: "#26b095",
+  gitModified: "#38bdf8", // Azul para Git
+  gitDeleted: "#f5a8c8",
+  error: "#d0493b",
+  warning: "#f3ac22",
 };
 
 function generateTheme(
@@ -70,7 +106,7 @@ function generateTheme(
       "editor.foreground": palette.textPrimary,
       "editorLineNumber.foreground": palette.textDisabled,
       "editorLineNumber.activeForeground": palette.accent2,
-      "editorCursor.foreground": palette.accent3,
+      "editorCursor.foreground": palette.accent2,
       "titleBar.activeBackground": palette.backgroundPrimary,
       "titleBar.activeForeground": palette.textSecondary,
       "titleBar.inactiveBackground": palette.backgroundPrimary,
@@ -172,6 +208,76 @@ function generateTheme(
       "gitDecoration.conflictingResourceForeground": palette.warning,
       "gitDecoration.ignoredResourceForeground": palette.textDisabled,
 
+      // --- MINIMAP ---
+      "minimap.background": palette.backgroundPrimary,
+      "minimap.selectionHighlight": palette.accent1,
+      "minimap.errorHighlight": palette.error,
+      "minimap.warningHighlight": palette.warning,
+      "minimap.findMatchHighlight": palette.accent1,
+
+      // --- SCROLLBAR ---
+      "scrollbarSlider.background": palette.textDisabled + "40",
+      "scrollbarSlider.hoverBackground": palette.textDisabled + "60",
+      "scrollbarSlider.activeBackground": palette.textDisabled + "80",
+
+      // --- PEEK VIEW ---
+      "peekView.border": palette.accent2,
+      "peekViewEditor.background": palette.backgroundSecondary,
+      "peekViewResult.background": palette.backgroundPrimary,
+      "peekViewTitle.background": palette.backgroundSecondary,
+
+      // --- PANEL ---
+      "panel.background": palette.backgroundSecondary,
+      "panel.border": palette.border,
+      "panelTitle.activeForeground": palette.accent2,
+      "panelTitle.inactiveForeground": palette.textSecondary,
+
+      // --- NOTIFICATIONS ---
+      "notifications.background": palette.backgroundSecondary,
+      "notifications.border": palette.border,
+      "notifications.foreground": palette.textPrimary,
+
+      // --- MENU ---
+      "menu.background": palette.backgroundSecondary,
+      "menu.foreground": palette.textPrimary,
+      "menu.selectionBackground": palette.backgroundTertiary,
+
+      // --- DIFF EDITOR ---
+      "diffEditor.insertedTextBackground": palette.gitAdded + "30",
+      "diffEditor.removedTextBackground": palette.gitDeleted + "30",
+      "diffEditor.insertedLineBackground": palette.gitAdded + "15",
+      "diffEditor.removedLineBackground": palette.gitDeleted + "15",
+
+      // --- EDITOR FEATURES ---
+      "editor.findMatchBackground": palette.accent1 + "40",
+      "editor.findMatchBorder": palette.accent1,
+      "editor.findMatchHighlightBackground": palette.accent1 + "20",
+      "editor.selectionBackground": palette.accent1 + "30",
+      "editor.lineHighlightBackground": palette.backgroundTertiary,
+      "editorBracketMatch.background": palette.backgroundTertiary,
+      "editorBracketMatch.border": palette.accent1,
+
+      // --- BRACKET PAIR GUIDES ---
+      "editorBracketPairGuide.activeBackground1": palette.accent1 + "40",
+      "editorBracketPairGuide.activeBackground2": palette.accent2 + "40",
+      "editorBracketPairGuide.activeBackground3": palette.accent3 + "40",
+      "editorBracketPairGuide.background1": palette.textDisabled + "20",
+      "editorBracketPairGuide.background2": palette.textDisabled + "20",
+      "editorBracketPairGuide.background3": palette.textDisabled + "20",
+      "editorBracketHighlight.foreground1": palette.accent1,
+      "editorBracketHighlight.foreground2": palette.accent2,
+      "editorBracketHighlight.foreground3": palette.accent3,
+
+      // --- INLAY HINTS ---
+      "editorInlayHint.background": palette.backgroundTertiary,
+      "editorInlayHint.foreground": palette.textSecondary,
+      "editorInlayHint.parameterBackground": palette.backgroundTertiary,
+      "editorInlayHint.typeBackground": palette.backgroundTertiary,
+
+      // --- STICKY SCROLL ---
+      "editorStickyScroll.background": palette.backgroundSecondary,
+      "editorStickyScrollHover.background": palette.backgroundTertiary,
+
       // --- OUTROS ---
       "rainbow-csv.column_1": palette.textPrimary,
       "rainbow-csv.column_2": palette.accent2,
@@ -192,7 +298,7 @@ function generateTheme(
       // Estilo das Células
       "notebook.cellEditorBackground": palette.backgroundSecondary, // Fundo da área de código da célula
       "notebook.cellBorderColor": palette.border, // Borda entre as células
-      "notebook.focusedCellBorder": palette.accent2, // Borda ciano na célula em foco
+      "notebook.focusedCellBorder": palette.accent1, // Borda roxa na célula em foco
       "notebook.selectedCellBorder": palette.accent1, // Borda roxa para células selecionadas
 
       // Barra de Status da Célula (onde mostra o tempo de execução)
@@ -231,7 +337,7 @@ function generateTheme(
           "entity.name.struct",
           "support.class",
         ],
-        settings: { foreground: palette.accent2, fontStyle: "underline" },
+        settings: { foreground: palette.accent1, fontStyle: "underline" },
       },
       {
         name: "Functions & Methods",
@@ -250,7 +356,7 @@ function generateTheme(
           "support.type.property-name",
           "variable.other.property",
         ],
-        settings: { foreground: palette.accent2 },
+        settings: { foreground: palette.accent1 },
       },
       {
         name: "Variable Parameters",
@@ -272,6 +378,51 @@ function generateTheme(
         settings: { foreground: palette.textPrimary },
       },
       {
+        name: "Numbers",
+        scope: ["constant.numeric"],
+        settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Operators",
+        scope: ["keyword.operator"],
+        settings: { foreground: palette.textSecondary },
+      },
+      {
+        name: "Regex",
+        scope: ["string.regexp"],
+        settings: { foreground: palette.accent3, fontStyle: "bold" },
+      },
+      {
+        name: "Escape Sequences",
+        scope: ["constant.character.escape"],
+        settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Type Parameters",
+        scope: ["entity.name.type.parameter"],
+        settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Enums",
+        scope: ["entity.name.enum"],
+        settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Interfaces",
+        scope: ["entity.name.interface"],
+        settings: { foreground: palette.accent2, fontStyle: "underline" },
+      },
+      {
+        name: "Namespaces",
+        scope: ["entity.name.namespace"],
+        settings: { foreground: palette.textSecondary },
+      },
+      {
+        name: "Language Constants",
+        scope: ["constant.language"],
+        settings: { foreground: palette.accent1 },
+      },
+      {
         name: "Punctuation - Structural",
         scope: [
           "punctuation.section.block",
@@ -286,12 +437,12 @@ function generateTheme(
       {
         name: "HTML/XML/JSX Tags",
         scope: ["entity.name.tag"],
-        settings: { foreground: palette.accent1 },
+        settings: { foreground: palette.accent2 },
       },
       {
         name: "HTML/XML/JSX Attributes",
         scope: ["entity.other.attribute-name"],
-        settings: { foreground: palette.accent2, fontStyle: "italic" },
+        settings: { foreground: palette.accent1, fontStyle: "bold" },
       },
       {
         name: "Documentation Comments",
@@ -337,7 +488,7 @@ function generateTheme(
           "markup.fenced_code_block.md",
           "markup.inline.raw.string.markdown",
         ],
-        settings: { foreground: palette.accent3 },
+        settings: { foreground: palette.accent1 },
       },
       {
         name: "Jupyter Magic Commands",
@@ -359,17 +510,28 @@ function generateTheme(
   };
   return theme;
 }
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Generate all themes
 const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
 const lightTheme = generateTheme(
   "The Herta Theme Light",
   "light",
   lightPalette
 );
+const pastelDarkTheme = generateTheme(
+  "The Herta Theme Pastel",
+  "dark",
+  pastelDarkPalette
+);
+const pastelLightTheme = generateTheme(
+  "The Herta Theme Pastel Light",
+  "light",
+  pastelLightPalette
+);
 
+// Define all theme paths
 const darkThemePath = path.join(
   __dirname,
   "themes",
@@ -380,8 +542,26 @@ const lightThemePath = path.join(
   "themes",
   "The Herta Theme-light.json"
 );
+const pastelDarkThemePath = path.join(
+  __dirname,
+  "themes",
+  "The Herta Theme-pastel-dark.json"
+);
+const pastelLightThemePath = path.join(
+  __dirname,
+  "themes",
+  "The Herta Theme-pastel-light.json"
+);
 
+// Write all theme files
 fs.writeFileSync(darkThemePath, JSON.stringify(darkTheme, null, 2));
 fs.writeFileSync(lightThemePath, JSON.stringify(lightTheme, null, 2));
+fs.writeFileSync(pastelDarkThemePath, JSON.stringify(pastelDarkTheme, null, 2));
+fs.writeFileSync(
+  pastelLightThemePath,
+  JSON.stringify(pastelLightTheme, null, 2)
+);
 
-console.log("Temas Dark e Light da Herta construídos com sucesso! ✨");
+console.log(
+  "Temas Dark, Light, Pastel Dark e Pastel Light da Herta construídos com sucesso! ✨"
+);

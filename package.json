@@ -27,6 +27,16 @@
         "label": "The Herta Light",
         "uiTheme": "vs",
         "path": "./themes/The Herta Theme-light.json"
+      },
+      {
+        "label": "The Herta Pastel",
+        "uiTheme": "vs-dark",
+        "path": "./themes/The Herta Theme-pastel-dark.json"
+      },
+      {
+        "label": "The Herta Pastel Light",
+        "uiTheme": "vs",
+        "path": "./themes/The Herta Theme-pastel-light.json"
       }
     ]
   },
