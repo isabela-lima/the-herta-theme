@@ -2,6 +2,101 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// Error handling utilities
+function validateHexColor(color: string, colorName: string): void {
+  const hexRegex = /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/;
+  if (!hexRegex.test(color)) {
+    throw new Error(
+      `Invalid hex color format for ${colorName}: "${color}". Expected format: #RRGGBB or #RGB`
+    );
+  }
+}
+
+function validatePalette(
+  palette: Record<string, string>,
+  paletteName: string
+): void {
+  for (const [key, value] of Object.entries(palette)) {
+    if (typeof value !== "string") {
+      throw new Error(
+        `Invalid color value in ${paletteName}.${key}: expected string, got ${typeof value}`
+      );
+    }
+    validateHexColor(value, `${paletteName}.${key}`);
+  }
+}
+
+function ensureDirectoryExists(dirPath: string): void {
+  try {
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true });
+      console.log(`Created directory: ${dirPath}`);
+    }
+  } catch (error) {
+    throw new Error(
+      `Failed to create directory ${dirPath}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+  }
+}
+
+function validateTheme(theme: ColorTheme, themeName: string): void {
+  if (!theme.name || typeof theme.name !== "string") {
+    throw new Error(
+      `Invalid theme name in ${themeName}: name must be a non-empty string`
+    );
+  }
+  if (!theme.type || (theme.type !== "dark" && theme.type !== "light")) {
+    throw new Error(
+      `Invalid theme type in ${themeName}: expected "dark" or "light", got "${theme.type}"`
+    );
+  }
+  if (!theme.colors || typeof theme.colors !== "object") {
+    throw new Error(
+      `Invalid theme colors in ${themeName}: colors must be an object`
+    );
+  }
+  if (!Array.isArray(theme.tokenColors)) {
+    throw new Error(
+      `Invalid theme tokenColors in ${themeName}: tokenColors must be an array`
+    );
+  }
+}
+
+function writeThemeFile(
+  filePath: string,
+  theme: ColorTheme,
+  themeName: string
+): void {
+  try {
+    const jsonContent = JSON.stringify(theme, null, 2);
+    fs.writeFileSync(filePath, jsonContent, "utf8");
+
+    // Verify file was written successfully
+    if (!fs.existsSync(filePath)) {
+      throw new Error(`File was not created: ${filePath}`);
+    }
+
+    // Verify file content is valid JSON
+    const fileContent = fs.readFileSync(filePath, "utf8");
+    JSON.parse(fileContent);
+
+    console.log(`✓ Successfully wrote theme: ${themeName} -> ${filePath}`);
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      throw new Error(
+        `Failed to write valid JSON for ${themeName} to ${filePath}: ${error.message}`
+      );
+    }
+    throw new Error(
+      `Failed to write theme file ${filePath} for ${themeName}: ${
+        error instanceof Error ? error.message : String(error)
+      }`
+    );
+  }
+}
+
 const darkPalette = {
   backgroundPrimary: "#252230", // Fundo principal do editor (mais claro)
   backgroundSecondary: "#1f1d2b", // Fundos de painéis, abas ativas (mais claro)
@@ -513,55 +608,103 @@ function generateTheme(
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Generate all themes
-const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
-const lightTheme = generateTheme(
-  "The Herta Theme Light",
-  "light",
-  lightPalette
-);
-const pastelDarkTheme = generateTheme(
-  "The Herta Theme Pastel",
-  "dark",
-  pastelDarkPalette
-);
-const pastelLightTheme = generateTheme(
-  "The Herta Theme Pastel Light",
-  "light",
-  pastelLightPalette
-);
+// Main build function with error handling
+function buildThemes(): void {
+  try {
+    console.log("🎨 Starting theme build process...\n");
 
-// Define all theme paths
-const darkThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-dark.json"
-);
-const lightThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-light.json"
-);
-const pastelDarkThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-pastel-dark.json"
-);
-const pastelLightThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-pastel-light.json"
-);
+    // Validate all palettes
+    console.log("Validating color palettes...");
+    validatePalette(darkPalette, "darkPalette");
+    validatePalette(lightPalette, "lightPalette");
+    validatePalette(pastelDarkPalette, "pastelDarkPalette");
+    validatePalette(pastelLightPalette, "pastelLightPalette");
+    console.log("✓ All palettes validated\n");
 
-// Write all theme files
-fs.writeFileSync(darkThemePath, JSON.stringify(darkTheme, null, 2));
-fs.writeFileSync(lightThemePath, JSON.stringify(lightTheme, null, 2));
-fs.writeFileSync(pastelDarkThemePath, JSON.stringify(pastelDarkTheme, null, 2));
-fs.writeFileSync(
-  pastelLightThemePath,
-  JSON.stringify(pastelLightTheme, null, 2)
-);
+    // Ensure themes directory exists
+    const themesDir = path.join(__dirname, "themes");
+    ensureDirectoryExists(themesDir);
 
-console.log(
-  "Temas Dark, Light, Pastel Dark e Pastel Light da Herta construídos com sucesso! ✨"
-);
+    // Generate all themes
+    console.log("Generating themes...");
+    const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
+    const lightTheme = generateTheme(
+      "The Herta Theme Light",
+      "light",
+      lightPalette
+    );
+    const pastelDarkTheme = generateTheme(
+      "The Herta Theme Pastel",
+      "dark",
+      pastelDarkPalette
+    );
+    const pastelLightTheme = generateTheme(
+      "The Herta Theme Pastel Light",
+      "light",
+      pastelLightPalette
+    );
+    console.log("✓ All themes generated\n");
+
+    // Validate generated themes
+    console.log("Validating generated themes...");
+    validateTheme(darkTheme, "darkTheme");
+    validateTheme(lightTheme, "lightTheme");
+    validateTheme(pastelDarkTheme, "pastelDarkTheme");
+    validateTheme(pastelLightTheme, "pastelLightTheme");
+    console.log("✓ All themes validated\n");
+
+    // Define all theme paths
+    const darkThemePath = path.join(
+      __dirname,
+      "themes",
+      "The Herta Theme-dark.json"
+    );
+    const lightThemePath = path.join(
+      __dirname,
+      "themes",
+      "The Herta Theme-light.json"
+    );
+    const pastelDarkThemePath = path.join(
+      __dirname,
+      "themes",
+      "The Herta Theme-pastel-dark.json"
+    );
+    const pastelLightThemePath = path.join(
+      __dirname,
+      "themes",
+      "The Herta Theme-pastel-light.json"
+    );
+
+    // Write all theme files
+    console.log("Writing theme files...");
+    writeThemeFile(darkThemePath, darkTheme, "The Herta Theme (Dark)");
+    writeThemeFile(lightThemePath, lightTheme, "The Herta Theme Light");
+    writeThemeFile(
+      pastelDarkThemePath,
+      pastelDarkTheme,
+      "The Herta Theme Pastel (Dark)"
+    );
+    writeThemeFile(
+      pastelLightThemePath,
+      pastelLightTheme,
+      "The Herta Theme Pastel Light"
+    );
+
+    console.log("\n✨ All themes built successfully!");
+    console.log("   - The Herta Theme (Dark)");
+    console.log("   - The Herta Theme Light");
+    console.log("   - The Herta Theme Pastel (Dark)");
+    console.log("   - The Herta Theme Pastel Light");
+  } catch (error) {
+    console.error("\n❌ Error building themes:");
+    console.error(error instanceof Error ? error.message : String(error));
+    if (error instanceof Error && error.stack) {
+      console.error("\nStack trace:");
+      console.error(error.stack);
+    }
+    process.exit(1);
+  }
+}
+
+// Execute build
+buildThemes();
