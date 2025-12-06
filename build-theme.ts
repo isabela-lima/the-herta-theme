@@ -3,22 +3,22 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const darkPalette = {
-  backgroundPrimary: "#1a1823", // Fundo principal do editor
-  backgroundSecondary: "#161420", // Fundos de painéis, abas ativas
-  backgroundTertiary: "#2a2839", // Hovers de listas
-  border: "#161420", // Bordas sutis
+  backgroundPrimary: "#252230", // Fundo principal do editor (mais claro)
+  backgroundSecondary: "#1f1d2b", // Fundos de painéis, abas ativas (mais claro)
+  backgroundTertiary: "#2d2a3f", // Hovers de listas (mais claro)
+  border: "#1f1d2b", // Bordas sutis
 
-  textPrimary: "#dcd7ff", // Texto principal, variáveis
-  textSecondary: "#8a8899", // Texto de menor importância
-  textDisabled: "#5a528a", // Texto bem apagado, comentários, pontuação
+  textPrimary: "#e5e0ff", // Texto principal, variáveis (mais claro para melhor contraste)
+  textSecondary: "#9a98aa", // Texto de menor importância (mais claro)
+  textDisabled: "#6a688a", // Texto bem apagado, comentários, pontuação (mais claro)
 
-  accent1: "#a29bfe", // Roxo Herta - Destaque principal
-  accent2: "#7dd3fc", // Azul puro (menos verde) - Destaque secundário
-  accent3: "#e84393", // Magenta Kururin (suave) - Destaque terciário
+  accent1: "#a29bfe", // Roxo Herta - Destaque principal (mais sutil)
+  accent2: "#7dd3fc", // Azul ciano - Destaque secundário (melhor contraste)
+  accent3: "#B464A4", // Pearly Purple - Roxo pastel suave da Herta
 
   gitAdded: "#55efc4", // Verde para Git
   gitModified: "#7dd3fc", // Azul para Git
-  gitDeleted: "#e84393", // Magenta para Git
+  gitDeleted: "#B464A4", // Pearly Purple para Git
   error: "#ff6b81", // Vermelho para erros
   warning: "#feca57", // Amarelo para avisos
 };
@@ -34,30 +34,30 @@ const lightPalette = {
   textDisabled: "#95a5a6",
 
   accent1: "#8c7ae6", // Roxo Herta (versão light)
-  accent2: "#0ea5e9", // Azul puro (menos verde) - versão light
-  accent3: "#e84393", // Magenta (versão light)
+  accent2: "#0ea5e9", // Azul ciano (versão light) - melhor contraste
+  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
 
   gitAdded: "#16a085",
   gitModified: "#0ea5e9", // Azul para Git
-  gitDeleted: "#e84393",
+  gitDeleted: "#B464A4",
   error: "#c0392b",
   warning: "#f39c12",
 };
 
 const pastelDarkPalette = {
-  backgroundPrimary: "#2a2833",
-  backgroundSecondary: "#2a2839",
-  backgroundTertiary: "#3a3849",
-  border: "#2a2839",
+  backgroundPrimary: "#2f2d3d", // Mais claro para melhor luminosidade
+  backgroundSecondary: "#2f2d43", // Mais claro
+  backgroundTertiary: "#3f3d53", // Mais claro
+  border: "#2f2d43",
   textPrimary: "#e5e0ff",
   textSecondary: "#9a98aa",
   textDisabled: "#6a688a",
-  accent1: "#b8b2ff",
-  accent2: "#9dd5f5", // Azul puro (menos verde) - pastel
-  accent3: "#f5a8c8",
+  accent1: "#b8b2ff", // Roxo pastel suave
+  accent2: "#9dd5f5", // Azul ciano pastel - melhor contraste
+  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
   gitAdded: "#75ffd4",
   gitModified: "#9dd5f5", // Azul para Git
-  gitDeleted: "#f5a8c8",
+  gitDeleted: "#B464A4",
   error: "#ff8ba1",
   warning: "#fed977",
 };
@@ -70,12 +70,12 @@ const pastelLightPalette = {
   textPrimary: "#3c4e60",
   textSecondary: "#8f9d9e",
   textDisabled: "#a5b5b6",
-  accent1: "#9c8af6",
-  accent2: "#38bdf8", // Azul puro (menos verde) - pastel light
-  accent3: "#f5a8c8",
+  accent1: "#9c8af6", // Roxo pastel suave
+  accent2: "#38bdf8", // Azul ciano pastel - melhor contraste
+  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
   gitAdded: "#26b095",
   gitModified: "#38bdf8", // Azul para Git
-  gitDeleted: "#f5a8c8",
+  gitDeleted: "#B464A4",
   error: "#d0493b",
   warning: "#f3ac22",
 };
@@ -337,7 +337,7 @@ function generateTheme(
           "entity.name.struct",
           "support.class",
         ],
-        settings: { foreground: palette.accent1, fontStyle: "underline" },
+        settings: { foreground: palette.accent2, fontStyle: "bold" },
       },
       {
         name: "Functions & Methods",
@@ -410,7 +410,7 @@ function generateTheme(
       {
         name: "Interfaces",
         scope: ["entity.name.interface"],
-        settings: { foreground: palette.accent2, fontStyle: "underline" },
+        settings: { foreground: palette.accent2, fontStyle: "bold" },
       },
       {
         name: "Namespaces",
@@ -442,7 +442,7 @@ function generateTheme(
       {
         name: "HTML/XML/JSX Attributes",
         scope: ["entity.other.attribute-name"],
-        settings: { foreground: palette.accent1, fontStyle: "bold" },
+        settings: { foreground: palette.accent1, fontStyle: "italic" },
       },
       {
         name: "Documentation Comments",

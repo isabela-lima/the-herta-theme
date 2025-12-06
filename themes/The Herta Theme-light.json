@@ -25,7 +25,7 @@
     "statusBar.background": "#8c7ae6",
     "statusBar.foreground": "#FFFFFF",
     "statusBar.border": "#8c7ae6",
-    "statusBar.debuggingBackground": "#e84393",
+    "statusBar.debuggingBackground": "#B464A4",
     "statusBar.debuggingForeground": "#FFFFFF",
     "statusBar.noFolderBackground": "#e6eaf2",
     "statusBar.noFolderForeground": "#7f8c8d",
@@ -78,7 +78,7 @@
     "terminal.ansiBrightGreen": "#16a085",
     "terminal.ansiBrightYellow": "#f39c12",
     "terminal.ansiBrightBlue": "#74b9ff",
-    "terminal.ansiBrightMagenta": "#e84393",
+    "terminal.ansiBrightMagenta": "#B464A4",
     "terminal.ansiBrightCyan": "#0ea5e9",
     "terminal.ansiBrightWhite": "#ffffff",
     "editorHoverWidget.background": "#e6eaf2",
@@ -95,11 +95,11 @@
     "editorGutter.background": "#f0f2f8",
     "editorGutter.modifiedBackground": "#0ea5e9",
     "editorGutter.addedBackground": "#16a085",
-    "editorGutter.deletedBackground": "#e84393",
+    "editorGutter.deletedBackground": "#B464A4",
     "editorIndentGuide.background": "#e6eaf2",
     "editorIndentGuide.activeBackground": "#8c7ae6",
     "gitDecoration.modifiedResourceForeground": "#0ea5e9",
-    "gitDecoration.deletedResourceForeground": "#e84393",
+    "gitDecoration.deletedResourceForeground": "#B464A4",
     "gitDecoration.untrackedResourceForeground": "#16a085",
     "gitDecoration.conflictingResourceForeground": "#f39c12",
     "gitDecoration.ignoredResourceForeground": "#95a5a6",
@@ -126,9 +126,9 @@
     "menu.foreground": "#2c3e50",
     "menu.selectionBackground": "#dce1ea",
     "diffEditor.insertedTextBackground": "#16a08530",
-    "diffEditor.removedTextBackground": "#e8439330",
+    "diffEditor.removedTextBackground": "#B464A430",
     "diffEditor.insertedLineBackground": "#16a08515",
-    "diffEditor.removedLineBackground": "#e8439315",
+    "diffEditor.removedLineBackground": "#B464A415",
     "editor.findMatchBackground": "#8c7ae640",
     "editor.findMatchBorder": "#8c7ae6",
     "editor.findMatchHighlightBackground": "#8c7ae620",
@@ -138,13 +138,13 @@
     "editorBracketMatch.border": "#8c7ae6",
     "editorBracketPairGuide.activeBackground1": "#8c7ae640",
     "editorBracketPairGuide.activeBackground2": "#0ea5e940",
-    "editorBracketPairGuide.activeBackground3": "#e8439340",
+    "editorBracketPairGuide.activeBackground3": "#B464A440",
     "editorBracketPairGuide.background1": "#95a5a620",
     "editorBracketPairGuide.background2": "#95a5a620",
     "editorBracketPairGuide.background3": "#95a5a620",
     "editorBracketHighlight.foreground1": "#8c7ae6",
     "editorBracketHighlight.foreground2": "#0ea5e9",
-    "editorBracketHighlight.foreground3": "#e84393",
+    "editorBracketHighlight.foreground3": "#B464A4",
     "editorInlayHint.background": "#dce1ea",
     "editorInlayHint.foreground": "#7f8c8d",
     "editorInlayHint.parameterBackground": "#dce1ea",
@@ -154,11 +154,11 @@
     "rainbow-csv.column_1": "#2c3e50",
     "rainbow-csv.column_2": "#0ea5e9",
     "rainbow-csv.column_3": "#8c7ae6",
-    "rainbow-csv.column_4": "#e84393",
+    "rainbow-csv.column_4": "#B464A4",
     "rainbow-csv.column_5": "#7f8c8d",
     "rainbow-csv.column_6": "#0ea5e9",
     "rainbow-csv.column_7": "#8c7ae6",
-    "rainbow-csv.column_8": "#e84393",
+    "rainbow-csv.column_8": "#B464A4",
     "rainbow-csv.comment": "#95a5a6",
     "rainbow-csv.quoted": "#7f8c8d",
     "notebook.editorBackground": "#f0f2f8",
@@ -192,7 +192,7 @@
         "constant"
       ],
       "settings": {
-        "foreground": "#e84393"
+        "foreground": "#B464A4"
       }
     },
     {
@@ -216,8 +216,8 @@
         "support.class"
       ],
       "settings": {
-        "foreground": "#8c7ae6",
-        "fontStyle": "underline"
+        "foreground": "#0ea5e9",
+        "fontStyle": "bold"
       }
     },
     {
@@ -300,7 +300,7 @@
         "string.regexp"
       ],
       "settings": {
-        "foreground": "#e84393",
+        "foreground": "#B464A4",
         "fontStyle": "bold"
       }
     },
@@ -338,7 +338,7 @@
       ],
       "settings": {
         "foreground": "#0ea5e9",
-        "fontStyle": "underline"
+        "fontStyle": "bold"
       }
     },
     {
@@ -389,7 +389,7 @@
       ],
       "settings": {
         "foreground": "#8c7ae6",
-        "fontStyle": "bold"
+        "fontStyle": "italic"
       }
     },
     {
