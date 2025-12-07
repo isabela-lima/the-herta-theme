@@ -1,0 +1,144 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  test:
+    name: Test and Validate
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run type check
+        run: npm run type-check
+
+      - name: Run linter
+        run: npm run lint
+
+      - name: Check code formatting
+        run: npm run format:check
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build themes
+        run: npm run build
+
+      - name: Validate generated themes
+        run: |
+          # Check if all theme files exist
+          if [ ! -f "themes/The Herta Theme-dark.json" ]; then
+            echo "❌ Missing dark theme file"
+            exit 1
+          fi
+          if [ ! -f "themes/The Herta Theme-light.json" ]; then
+            echo "❌ Missing light theme file"
+            exit 1
+          fi
+          if [ ! -f "themes/The Herta Theme-pastel-dark.json" ]; then
+            echo "❌ Missing pastel dark theme file"
+            exit 1
+          fi
+          if [ ! -f "themes/The Herta Theme-pastel-light.json" ]; then
+            echo "❌ Missing pastel light theme file"
+            exit 1
+          fi
+
+          # Validate JSON structure of each theme using a simple script
+          node << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const themeFiles = [
+            'themes/The Herta Theme-dark.json',
+            'themes/The Herta Theme-light.json',
+            'themes/The Herta Theme-pastel-dark.json',
+            'themes/The Herta Theme-pastel-light.json'
+          ];
+
+          for (const themeFile of themeFiles) {
+            console.log(`Validating ${themeFile}...`);
+            try {
+              const content = fs.readFileSync(themeFile, 'utf8');
+              const theme = JSON.parse(content);
+              
+              if (!theme.name || !theme.type || !theme.colors || !theme.tokenColors) {
+                console.error(`❌ Missing required fields in ${themeFile}`);
+                process.exit(1);
+              }
+              
+              if (theme.type !== 'dark' && theme.type !== 'light') {
+                console.error(`❌ Invalid theme type in ${themeFile}: ${theme.type}`);
+                process.exit(1);
+              }
+              
+              console.log(`✅ ${themeFile} is valid`);
+            } catch (error) {
+              console.error(`❌ Invalid JSON in ${themeFile}:`, error.message);
+              process.exit(1);
+            }
+          }
+
+          console.log('✅ All themes validated successfully');
+          EOF
+
+      - name: Upload test coverage
+        if: matrix.node-version == '20.x'
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/coverage-final.json
+          fail_ci_if_error: false
+
+  validate:
+    name: Full Validation
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run full validation
+        run: npm run validate
+
+      - name: Verify theme files are generated
+        run: |
+          echo "Checking generated theme files..."
+          ls -la themes/
+
+          # Count theme files
+          THEME_COUNT=$(ls -1 themes/*.json 2>/dev/null | wc -l)
+          if [ "$THEME_COUNT" -ne 4 ]; then
+            echo "❌ Expected 4 theme files, found $THEME_COUNT"
+            exit 1
+          fi
+
+          echo "✅ All 4 theme files present"
