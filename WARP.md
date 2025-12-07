@@ -9,24 +9,31 @@ The Herta Theme is a VS Code color theme extension inspired by Herta from Honkai
 ## Development Commands
 
 ### Build Theme
+
 ```bash
 npm run build
 ```
+
 Compiles the theme TypeScript source into JSON theme files using ts-node.
 
 ### Development Mode
+
 ```bash
 npm run dev
 ```
-Runs the build in watch mode using nodemon - automatically rebuilds themes when `build-theme.ts` changes.
+
+Runs the build in watch mode using nodemon - automatically rebuilds themes when files in `src/` change.
 
 ### Package Extension
+
 ```bash
 npx vsce package
 ```
+
 Creates a `.vsix` file for distribution (requires vsce to be installed globally).
 
 ### Install Development Dependencies
+
 ```bash
 npm install
 ```
@@ -35,22 +42,30 @@ npm install
 
 ### Core Components
 
-**Theme Generation System** (`build-theme.ts`):
-- Contains semantic color palettes for dark and light themes
-- Uses a single `generateTheme()` function that accepts palette configurations
+**Theme Generation System** (`src/`):
+
+- Modular structure with separated concerns:
+  - `src/palettes.ts`: Contains semantic color palettes for all theme variants
+  - `src/theme-generator.ts`: Uses a single `generateTheme()` function that accepts palette configurations
+  - `src/validators.ts`: Validation functions for colors, palettes, and themes
+  - `src/file-writer.ts`: File operations with error handling
+  - `src/config.ts`: Centralized configuration
+  - `src/index.ts`: Main entry point that orchestrates the build process
 - Generates complete VS Code theme JSON files with comprehensive color mappings
 - Includes extensive support for workbench colors, syntax highlighting, terminal colors, and Jupyter Notebook integration
 
 **Color Palette Structure**:
+
 - **Primary Colors**: Background layers (primary, secondary, tertiary) and borders
 - **Text Hierarchy**: Primary text, secondary text, and disabled text
-- **Accent Colors**: 
+- **Accent Colors**:
   - `accent1` (Purple - Herta): Main theme color for keywords, status bar
-  - `accent2` (Cyan - Holographic): Secondary accent for functions, focus elements  
+  - `accent2` (Cyan - Holographic): Secondary accent for functions, focus elements
   - `accent3` (Magenta - Kururin): Tertiary accent for strings, cursor
 - **Status Colors**: Git colors (added, modified, deleted), error, warning
 
 **Type Definitions** (`types.d.ts`):
+
 - Complete TypeScript interfaces for VS Code theme structure
 - Extensive `WorkbenchColors` interface with 600+ color properties
 - `TokenColor` and `ColorTheme` interfaces for syntax highlighting
@@ -62,7 +77,13 @@ themes/
 ├── The Herta Theme-dark.json    # Generated dark theme
 └── The Herta Theme-light.json   # Generated light theme
 
-build-theme.ts                   # Theme generation script
+src/
+├── index.ts                     # Main entry point
+├── config.ts                    # Configuration
+├── palettes.ts                  # Color palettes
+├── theme-generator.ts           # Theme generation logic
+├── validators.ts                # Validation functions
+└── file-writer.ts               # File operations
 types.d.ts                       # TypeScript definitions
 package.json                     # Extension manifest and dependencies
 ```
@@ -70,6 +91,7 @@ package.json                     # Extension manifest and dependencies
 ### Theme Features
 
 **Comprehensive Coverage**:
+
 - Complete workbench theming (editor, sidebar, activity bar, status bar, terminal)
 - Syntax highlighting for multiple languages
 - Git integration colors
@@ -78,6 +100,7 @@ package.json                     # Extension manifest and dependencies
 - Terminal ANSI color customization
 
 **Design Philosophy**:
+
 - Uses semantic color naming for maintainability
 - Consistent contrast ratios between light and dark themes
 - Holographic/futuristic aesthetic matching Herta's character design
@@ -86,12 +109,14 @@ package.json                     # Extension manifest and dependencies
 ### Extension Development
 
 **VS Code Integration**:
+
 - Contributes two themes: "The Herta" (dark) and "The Herta Light"
 - Uses standard VS Code theme contribution points
 - Includes launch configuration for extension debugging
 
 **Development Workflow**:
-1. Modify color palettes or theme logic in `build-theme.ts`
+
+1. Modify color palettes in `src/palettes.ts` or theme logic in `src/theme-generator.ts`
 2. Run `npm run build` to generate new theme JSON files
 3. Test themes using F5 (Extension Development Host) in VS Code
 4. Package with vsce when ready for distribution

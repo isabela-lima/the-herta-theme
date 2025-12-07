@@ -1,6 +1,6 @@
 # The Herta Theme
 
-> *"Ahem! Remember this moment—the birth of a star-studded theme, named after the genius of all geniuses!"* — The Herta
+> _"Ahem! Remember this moment—the birth of a star-studded theme, named after the genius of all geniuses!"_ — The Herta
 
 A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a holographic color palette that brings the genius puppet master's aesthetic to your coding environment.
 
@@ -18,6 +18,7 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 ## 🎨 Color Palette
 
 ### Dark Theme
+
 - **Primary Purple (Herta)**: `#a29bfe` - Keywords, status bar, main accents
 - **Holographic Cyan**: `#81ecec` - Functions, focus elements, info
 - **Kururin Magenta**: `#e84393` - Strings, cursor, highlights
@@ -25,12 +26,14 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 - **Text Hierarchy**: From bright lavender to subtle grays
 
 ### Light Theme
+
 - **Adapted Palette**: Maintains the same accent relationships with light-friendly backgrounds
 - **Consistent Contrast**: Carefully balanced for readability in bright environments
 
 ## 🚀 Installation
 
 ### From VS Code Marketplace
+
 1. Open VS Code
 2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
 3. Search for "The Herta Theme"
@@ -40,6 +43,7 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
    - **"The Herta Light"** (Light)
 
 ### From VSIX File
+
 1. Download the `.vsix` file from releases
 2. Open VS Code
 3. Run `Extensions: Install from VSIX...` from Command Palette
@@ -48,11 +52,13 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 ## 🛠️ Development
 
 ### Prerequisites
+
 - Node.js (v18+ recommended)
 - npm or yarn
 - TypeScript knowledge for modifications
 
 ### Setup
+
 ```bash
 # Clone the repository
 git clone https://github.com/isabela-lima/the-herta-theme.git
@@ -66,6 +72,7 @@ npm run build
 ```
 
 ### Development Commands
+
 ```bash
 # Watch mode - auto-rebuild on changes
 npm run dev
@@ -78,6 +85,7 @@ npx vsce package
 ```
 
 ### Testing Your Changes
+
 1. Press `F5` to open Extension Development Host
 2. In the new window, select your theme from Color Theme settings
 3. Test with various file types and UI elements
@@ -86,10 +94,18 @@ npx vsce package
 
 ```
 the-herta-theme/
-├── themes/                    # Generated theme files
+├── src/                      # Source code modules
+│   ├── index.ts             # Main entry point
+│   ├── config.ts            # Configuration
+│   ├── palettes.ts          # Color palettes
+│   ├── theme-generator.ts   # Theme generation logic
+│   ├── validators.ts        # Validation functions
+│   └── file-writer.ts       # File operations
+├── themes/                   # Generated theme files
 │   ├── The Herta Theme-dark.json
-│   └── The Herta Theme-light.json
-├── build-theme.ts            # Theme generation script
+│   ├── The Herta Theme-light.json
+│   ├── The Herta Theme-pastel-dark.json
+│   └── The Herta Theme-pastel-light.json
 ├── types.d.ts               # TypeScript definitions
 ├── package.json             # Extension manifest
 └── README.md               # This file
@@ -99,7 +115,8 @@ the-herta-theme/
 
 **Semantic Color System**: Colors are named by purpose, not appearance, making maintenance and consistency easier.
 
-**Herta's Aesthetic**: 
+**Herta's Aesthetic**:
+
 - Purple represents Herta's primary color and genius-level intellect
 - Cyan captures the holographic, futuristic technology she creates
 - Magenta adds the playful "Kururin" element from her personality
@@ -107,6 +124,7 @@ the-herta-theme/
 **Readability First**: All color combinations meet or exceed WCAG contrast requirements for optimal code readability.
 
 **Comprehensive Coverage**: Beyond basic syntax highlighting, the theme covers:
+
 - Workbench UI (sidebar, activity bar, status bar)
 - Terminal colors
 - Git decorations
@@ -118,7 +136,7 @@ the-herta-theme/
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes to `build-theme.ts`
+3. Make your changes to files in `src/` (e.g., `src/palettes.ts` for colors)
 4. Run `npm run build` to generate updated theme files
 5. Test thoroughly in the Extension Development Host
 6. Commit your changes (`git commit -m 'Add amazing feature'`)
@@ -126,6 +144,7 @@ the-herta-theme/
 8. Open a Pull Request
 
 ### Color Modification Guidelines
+
 - Maintain semantic naming conventions
 - Test both dark and light variants
 - Ensure adequate contrast ratios
@@ -147,4 +166,4 @@ This theme is inspired by Herta, a character from Honkai: Star Rail by HoYoverse
 
 ---
 
-*"Hmph. Obviously, this theme is a masterpiece. After all, it bears my name!"* ✨
+_"Hmph. Obviously, this theme is a masterpiece. After all, it bears my name!"_ ✨

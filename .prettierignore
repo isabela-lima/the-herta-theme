@@ -1,0 +1,5 @@
+node_modules
+themes
+*.vsix
+dist
+package-lock.json
