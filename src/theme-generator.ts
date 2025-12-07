@@ -2,11 +2,27 @@ import type { ColorTheme } from "../types.d.js";
 import type { ColorPalette } from "./palettes.js";
 
 /**
- * Generates a VS Code theme from a color palette
- * @param name - Display name of the theme
- * @param type - Theme type ("dark" or "light")
- * @param palette - Color palette to use for the theme
- * @returns Complete ColorTheme object
+ * Generates a complete VS Code theme from a color palette.
+ * Creates a comprehensive theme configuration including:
+ * - Workbench colors (editor, sidebar, status bar, etc.)
+ * - Syntax highlighting token colors
+ * - Terminal ANSI colors
+ * - Git decoration colors
+ * - Jupyter Notebook support
+ * - Extension integrations (Rainbow CSV)
+ *
+ * @param {string} name - Display name of the theme (shown in VS Code theme picker)
+ * @param {"dark" | "light"} type - Theme type, either "dark" or "light"
+ * @param {ColorPalette} palette - Color palette object containing all theme colors
+ * @returns {ColorTheme} Complete ColorTheme object ready to be written as JSON
+ *
+ * @example
+ * // Generate a dark theme
+ * const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
+ *
+ * @example
+ * // Generate a light theme
+ * const lightTheme = generateTheme("The Herta Theme Light", "light", lightPalette);
  */
 export function generateTheme(
   name: string,

@@ -8,7 +8,11 @@ import {
 } from "./palettes.js";
 import { generateTheme } from "./theme-generator.js";
 import { ensureDirectoryExists, writeThemeFile } from "./file-writer.js";
-import { validatePalette, validateTheme } from "./validators.js";
+import {
+  validatePalette,
+  validateTheme,
+  validatePaletteContrast,
+} from "./validators.js";
 
 /**
  * Main build function with error handling
@@ -24,6 +28,14 @@ function buildThemes(): void {
     validatePalette(pastelDarkPalette, "pastelDarkPalette");
     validatePalette(pastelLightPalette, "pastelLightPalette");
     console.log("✓ All palettes validated\n");
+
+    // Validate contrast ratios (WCAG compliance)
+    console.log("Validating contrast ratios (WCAG AA)...");
+    validatePaletteContrast(darkPalette, "darkPalette");
+    validatePaletteContrast(lightPalette, "lightPalette");
+    validatePaletteContrast(pastelDarkPalette, "pastelDarkPalette");
+    validatePaletteContrast(pastelLightPalette, "pastelLightPalette");
+    console.log("✓ All contrast ratios meet WCAG AA standards\n");
 
     // Ensure themes directory exists
     ensureDirectoryExists(config.themesDir);

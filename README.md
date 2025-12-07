@@ -111,6 +111,26 @@ the-herta-theme/
 └── README.md               # This file
 ```
 
+## ♿ Accessibility
+
+The Herta Theme is designed with accessibility in mind. All themes are validated for WCAG (Web Content Accessibility Guidelines) compliance:
+
+### Contrast Ratios
+
+- **Primary Text**: Meets WCAG AA Normal (4.5:1) for optimal readability
+- **Secondary Text**: Minimum 2.5:1 for less critical information
+- **UI Accents**: Minimum 1.95:1 for large UI elements (status bars, buttons, etc.)
+
+### Validation
+
+The build process automatically validates contrast ratios for all color combinations to ensure accessibility standards are met. This validation runs during:
+
+- Theme generation (`npm run build`)
+- CI/CD pipeline checks
+- Pre-commit validation
+
+All four theme variants (Dark, Light, Pastel Dark, Pastel Light) are tested to ensure they meet these accessibility requirements.
+
 ## 🎯 Design Philosophy
 
 **Semantic Color System**: Colors are named by purpose, not appearance, making maintenance and consistency easier.

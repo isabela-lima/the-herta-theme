@@ -2,9 +2,16 @@ import fs from "fs";
 import type { ColorTheme } from "../types.d.js";
 
 /**
- * Ensures a directory exists, creating it if necessary
- * @param dirPath - Path to the directory
- * @throws Error if directory cannot be created
+ * Ensures a directory exists, creating it recursively if necessary.
+ * Uses Node.js fs.mkdirSync with recursive option to create parent directories as needed.
+ *
+ * @param {string} dirPath - Absolute or relative path to the directory
+ * @throws {Error} If directory cannot be created (e.g., permission denied)
+ *
+ * @example
+ * // Ensure themes directory exists before writing theme files
+ * ensureDirectoryExists("./themes");
+ * writeThemeFile("./themes/theme.json", theme, "My Theme");
  */
 export function ensureDirectoryExists(dirPath: string): void {
   try {
@@ -22,11 +29,22 @@ export function ensureDirectoryExists(dirPath: string): void {
 }
 
 /**
- * Writes a theme to a JSON file with validation
- * @param filePath - Path where the theme file should be written
- * @param theme - The theme object to write
- * @param themeName - Display name of the theme for logging
- * @throws Error if file cannot be written or validated
+ * Writes a VS Code theme to a JSON file with validation.
+ * Performs the following steps:
+ * 1. Serializes the theme object to formatted JSON (2-space indentation)
+ * 2. Writes the JSON to the specified file path
+ * 3. Verifies the file was created successfully
+ * 4. Validates the written JSON is parseable
+ *
+ * @param {string} filePath - Absolute or relative path where the theme file should be written
+ * @param {ColorTheme} theme - The ColorTheme object to write
+ * @param {string} themeName - Display name of the theme for logging and error messages
+ * @throws {Error} If file cannot be written, file is not created, or JSON is invalid
+ *
+ * @example
+ * // Write a theme to a file
+ * const theme = generateTheme("My Theme", "dark", darkPalette);
+ * writeThemeFile("./themes/my-theme.json", theme, "My Theme");
  */
 export function writeThemeFile(
   filePath: string,
