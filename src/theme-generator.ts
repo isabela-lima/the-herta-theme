@@ -289,9 +289,14 @@ export function generateTheme(
         settings: { foreground: palette.accent2 },
       },
       {
-        name: "Variables & Parameters",
-        scope: ["variable"],
-        settings: { foreground: palette.textPrimary },
+        name: "Primitive Types",
+        scope: [
+          "support.type.primitive",
+          "support.type.primitive.ts",
+          "support.type.builtin",
+          "support.type.builtin.ts",
+        ],
+        settings: { foreground: palette.accent2 },
       },
       {
         name: "Object Keys, Property Names",
@@ -299,8 +304,14 @@ export function generateTheme(
           "meta.object-literal.key",
           "support.type.property-name",
           "variable.other.property",
+          "variable.other.object.property",
         ],
         settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Variables & Parameters",
+        scope: ["variable"],
+        settings: { foreground: palette.textPrimary },
       },
       {
         name: "Variable Parameters",

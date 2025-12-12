@@ -231,12 +231,15 @@
       }
     },
     {
-      "name": "Variables & Parameters",
+      "name": "Primitive Types",
       "scope": [
-        "variable"
+        "support.type.primitive",
+        "support.type.primitive.ts",
+        "support.type.builtin",
+        "support.type.builtin.ts"
       ],
       "settings": {
-        "foreground": "#e5e0ff"
+        "foreground": "#7dd3fc"
       }
     },
     {
@@ -244,10 +247,20 @@
       "scope": [
         "meta.object-literal.key",
         "support.type.property-name",
-        "variable.other.property"
+        "variable.other.property",
+        "variable.other.object.property"
       ],
       "settings": {
         "foreground": "#a29bfe"
+      }
+    },
+    {
+      "name": "Variables & Parameters",
+      "scope": [
+        "variable"
+      ],
+      "settings": {
+        "foreground": "#e5e0ff"
       }
     },
     {
