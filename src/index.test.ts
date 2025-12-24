@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import type { ColorPalette } from "../types.d.js";
+import type { ColorPalette } from "../types.js";
 
 // Mock all dependencies
 vi.mock("./config.js", () => ({

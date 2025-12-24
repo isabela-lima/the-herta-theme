@@ -1,4 +1,5 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import { config } from "./config.js";
 import {
   darkPalette,
@@ -96,6 +97,6 @@ export function buildThemes(): void {
 
 // Execute build when run directly (not when imported for testing)
 // Check if this module is being run directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (fileURLToPath(import.meta.url) === process.argv[1]) {
   buildThemes();
 }
