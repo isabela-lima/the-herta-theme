@@ -33,24 +33,24 @@ export interface ColorPalette {
  * const theme = generateTheme("My Dark Theme", "dark", darkPalette);
  */
 export const darkPalette: ColorPalette = {
-  backgroundPrimary: "#252230", // Fundo principal do editor (mais claro)
-  backgroundSecondary: "#1f1d2b", // Fundos de painéis, abas ativas (mais claro)
-  backgroundTertiary: "#2d2a3f", // Hovers de listas (mais claro)
-  border: "#1f1d2b", // Bordas sutis
+  backgroundPrimary: "#252230",
+  backgroundSecondary: "#1f1d2b",
+  backgroundTertiary: "#2d2a3f",
+  border: "#2d2a3f",
 
-  textPrimary: "#e5e0ff", // Texto principal, variáveis (mais claro para melhor contraste)
-  textSecondary: "#9a98aa", // Texto de menor importância (mais claro)
-  textDisabled: "#6a688a", // Texto bem apagado, comentários, pontuação (mais claro)
+  textPrimary: "#e5e0ff",
+  textSecondary: "#9a98aa",
+  textDisabled: "#7a7890",
 
-  accent1: "#a29bfe", // Roxo Herta - Destaque principal (mais sutil)
-  accent2: "#7dd3fc", // Azul ciano - Destaque secundário (melhor contraste)
-  accent3: "#B464A4", // Pearly Purple - Roxo pastel suave da Herta
+  accent1: "#a29bfe",
+  accent2: "#7dd3fc",
+  accent3: "#FF6B9D",
 
-  gitAdded: "#55efc4", // Verde para Git
-  gitModified: "#7dd3fc", // Azul para Git
-  gitDeleted: "#B464A4", // Pearly Purple para Git
-  error: "#ff6b81", // Vermelho para erros
-  warning: "#feca57", // Amarelo para avisos
+  gitAdded: "#55efc4",
+  gitModified: "#4fc3f7",
+  gitDeleted: "#FF6B9D",
+  error: "#ff6b81",
+  warning: "#feca57",
 };
 
 /**
@@ -70,16 +70,16 @@ export const lightPalette: ColorPalette = {
   border: "#dce1ea",
 
   textPrimary: "#2c3e50",
-  textSecondary: "#7f8c8d",
-  textDisabled: "#95a5a6",
+  textSecondary: "#6c7a7b",
+  textDisabled: "#a5b5b6",
 
-  accent1: "#8c7ae6", // Roxo Herta (versão light)
-  accent2: "#0ea5e9", // Azul ciano (versão light) - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
+  accent1: "#8c7ae6",
+  accent2: "#0ea5e9",
+  accent3: "#FF6B9D",
 
   gitAdded: "#16a085",
-  gitModified: "#0ea5e9", // Azul para Git
-  gitDeleted: "#B464A4",
+  gitModified: "#29b6f6",
+  gitDeleted: "#FF6B9D",
   error: "#c0392b",
   warning: "#f39c12",
 };
@@ -92,19 +92,19 @@ export const lightPalette: ColorPalette = {
  * @constant {ColorPalette}
  */
 export const pastelDarkPalette: ColorPalette = {
-  backgroundPrimary: "#2f2d3d", // Mais claro para melhor luminosidade
-  backgroundSecondary: "#2f2d43", // Mais claro
-  backgroundTertiary: "#3f3d53", // Mais claro
-  border: "#2f2d43",
+  backgroundPrimary: "#2f2d3d",
+  backgroundSecondary: "#2f2d43",
+  backgroundTertiary: "#3f3d53",
+  border: "#3f3d53",
   textPrimary: "#e5e0ff",
   textSecondary: "#9a98aa",
-  textDisabled: "#6a688a",
-  accent1: "#b8b2ff", // Roxo pastel suave
-  accent2: "#9dd5f5", // Azul ciano pastel - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
+  textDisabled: "#7a7890",
+  accent1: "#b8b2ff",
+  accent2: "#9dd5f5",
+  accent3: "#FF6B9D",
   gitAdded: "#75ffd4",
-  gitModified: "#9dd5f5", // Azul para Git
-  gitDeleted: "#B464A4",
+  gitModified: "#6dd5f5",
+  gitDeleted: "#FF6B9D",
   error: "#ff8ba1",
   warning: "#fed977",
 };
@@ -122,14 +122,14 @@ export const pastelLightPalette: ColorPalette = {
   backgroundTertiary: "#e8ecf3",
   border: "#e8ecf3",
   textPrimary: "#3c4e60",
-  textSecondary: "#8f9d9e",
+  textSecondary: "#7c8d8e",
   textDisabled: "#a5b5b6",
-  accent1: "#9c8af6", // Roxo pastel suave
-  accent2: "#38bdf8", // Azul ciano pastel - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
+  accent1: "#9c8af6",
+  accent2: "#38bdf8",
+  accent3: "#FF6B9D",
   gitAdded: "#26b095",
-  gitModified: "#38bdf8", // Azul para Git
-  gitDeleted: "#B464A4",
+  gitModified: "#4dd0e1",
+  gitDeleted: "#FF6B9D",
   error: "#d0493b",
   warning: "#f3ac22",
 };

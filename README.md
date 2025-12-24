@@ -1,13 +1,13 @@
-# The Herta Theme
+# Holographic Purple Theme
 
-> _"Ahem! Remember this moment—the birth of a star-studded theme, named after the genius of all geniuses!"_ — The Herta
+> A beautiful holographic color palette with purple, cyan, and magenta accents for a futuristic coding experience.
 
-A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a holographic color palette that brings the genius puppet master's aesthetic to your coding environment.
+A beautiful VS Code theme featuring a holographic color palette with purple, cyan, and magenta accents that brings a futuristic aesthetic to your coding environment.
 
 ## ✨ Features
 
 - **🎨 Dual Themes**: Dark and Light variants for any preference
-- **🌈 Holographic Palette**: Purple, cyan, and magenta accents inspired by Herta's futuristic design
+- **🌈 Holographic Palette**: Purple, cyan, and magenta accents with a futuristic design
 - **📝 Comprehensive Coverage**: Full syntax highlighting for multiple programming languages
 - **🎯 Smart Color System**: Semantic color naming for consistent theming across all UI elements
 - **📊 Jupyter Support**: Optimized colors for Jupyter Notebooks
@@ -19,9 +19,9 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 
 ### Dark Theme
 
-- **Primary Purple (Herta)**: `#a29bfe` - Keywords, status bar, main accents
-- **Holographic Cyan**: `#81ecec` - Functions, focus elements, info
-- **Kururin Magenta**: `#e84393` - Strings, cursor, highlights
+- **Primary Purple**: `#a29bfe` - Keywords, status bar, main accents
+- **Holographic Cyan**: `#7dd3fc` - Functions, focus elements, info
+- **Accent Magenta**: `#FF6B9D` - Strings, cursor, highlights
 - **Background Layers**: Deep space purples (`#1a1823`, `#161420`, `#2a2839`)
 - **Text Hierarchy**: From bright lavender to subtle grays
 
@@ -36,11 +36,13 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 
 1. Open VS Code
 2. Go to Extensions (`Ctrl+Shift+X` / `Cmd+Shift+X`)
-3. Search for "The Herta Theme"
+3. Search for "Holographic Purple Theme"
 4. Click **Install**
 5. Go to `File > Preferences > Color Theme` and select:
-   - **"The Herta"** (Dark)
-   - **"The Herta Light"** (Light)
+   - **"Holographic Purple"** (Dark)
+   - **"Holographic Purple Light"** (Light)
+   - **"Holographic Purple Pastel"** (Dark Pastel)
+   - **"Holographic Purple Pastel Light"** (Light Pastel)
 
 ### From VSIX File
 
@@ -61,8 +63,8 @@ A beautiful VS Code theme inspired by Herta from Honkai: Star Rail, featuring a 
 
 ```bash
 # Clone the repository
-git clone https://github.com/isabela-lima/the-herta-theme.git
-cd the-herta-theme
+git clone https://github.com/isabela-lima/holographic-purple-theme.git
+cd holographic-purple-theme
 
 # Install dependencies
 npm install
@@ -93,7 +95,7 @@ npx vsce package
 ## 📁 Project Structure
 
 ```
-the-herta-theme/
+holographic-purple-theme/
 ├── src/                      # Source code modules
 │   ├── index.ts             # Main entry point
 │   ├── config.ts            # Configuration
@@ -102,10 +104,10 @@ the-herta-theme/
 │   ├── validators.ts        # Validation functions
 │   └── file-writer.ts       # File operations
 ├── themes/                   # Generated theme files
-│   ├── The Herta Theme-dark.json
-│   ├── The Herta Theme-light.json
-│   ├── The Herta Theme-pastel-dark.json
-│   └── The Herta Theme-pastel-light.json
+│   ├── Holographic Purple Theme-dark.json
+│   ├── Holographic Purple Theme-light.json
+│   ├── Holographic Purple Theme-pastel-dark.json
+│   └── Holographic Purple Theme-pastel-light.json
 ├── types.d.ts               # TypeScript definitions
 ├── package.json             # Extension manifest
 └── README.md               # This file
@@ -113,7 +115,7 @@ the-herta-theme/
 
 ## ♿ Accessibility
 
-The Herta Theme is designed with accessibility in mind. All themes are validated for WCAG (Web Content Accessibility Guidelines) compliance:
+Holographic Purple Theme is designed with accessibility in mind. All themes are validated for WCAG (Web Content Accessibility Guidelines) compliance:
 
 ### Contrast Ratios
 
@@ -135,11 +137,11 @@ All four theme variants (Dark, Light, Pastel Dark, Pastel Light) are tested to e
 
 **Semantic Color System**: Colors are named by purpose, not appearance, making maintenance and consistency easier.
 
-**Herta's Aesthetic**:
+**Futuristic Aesthetic**:
 
-- Purple represents Herta's primary color and genius-level intellect
-- Cyan captures the holographic, futuristic technology she creates
-- Magenta adds the playful "Kururin" element from her personality
+- Purple represents the primary theme color with a sophisticated, modern feel
+- Cyan captures the holographic, futuristic technology aesthetic
+- Magenta adds vibrant accents for highlights and interactive elements
 
 **Readability First**: All color combinations meet or exceed WCAG contrast requirements for optimal code readability.
 
@@ -174,16 +176,11 @@ All four theme variants (Dark, Light, Pastel Dark, Pastel Light) are tested to e
 
 MIT License - see [LICENSE](LICENSE) file for details.
 
-## 🎮 About Honkai: Star Rail
-
-This theme is inspired by Herta, a character from Honkai: Star Rail by HoYoverse. This is a fan-created theme and is not officially affiliated with or endorsed by HoYoverse.
-
 ## 💫 Acknowledgments
 
-- **HoYoverse** for creating the amazing character Herta
 - **VS Code Theme Guidelines** for theming best practices
 - **The developer community** for feedback and contributions
 
 ---
 
-_"Hmph. Obviously, this theme is a masterpiece. After all, it bears my name!"_ ✨
+Enjoy your futuristic coding experience! ✨

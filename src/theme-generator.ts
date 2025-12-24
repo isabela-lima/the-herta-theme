@@ -18,11 +18,11 @@ import type { ColorPalette } from "./palettes.js";
  *
  * @example
  * // Generate a dark theme
- * const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
+ * const darkTheme = generateTheme("Holographic Purple Theme", "dark", darkPalette);
  *
  * @example
  * // Generate a light theme
- * const lightTheme = generateTheme("The Herta Theme Light", "light", lightPalette);
+ * const lightTheme = generateTheme("Holographic Purple Theme Light", "light", lightPalette);
  */
 export function generateTheme(
   name: string,
@@ -113,7 +113,7 @@ export function generateTheme(
       "terminal.ansiRed": palette.error,
       "terminal.ansiGreen": palette.gitAdded,
       "terminal.ansiYellow": palette.warning,
-      "terminal.ansiBlue": "#54a0ff",
+      "terminal.ansiBlue": palette.accent2, // Usa accent2 para consistência
       "terminal.ansiMagenta": palette.accent1,
       "terminal.ansiCyan": palette.accent2,
       "terminal.ansiWhite": palette.textPrimary,
@@ -121,10 +121,10 @@ export function generateTheme(
       "terminal.ansiBrightRed": palette.error,
       "terminal.ansiBrightGreen": palette.gitAdded,
       "terminal.ansiBrightYellow": palette.warning,
-      "terminal.ansiBrightBlue": "#74b9ff", // Mantendo um azul padrão
+      "terminal.ansiBrightBlue": palette.accent2, // Versão bright usa accent2 (já é brilhante)
       "terminal.ansiBrightMagenta": palette.accent3,
       "terminal.ansiBrightCyan": palette.accent2,
-      "terminal.ansiBrightWhite": "#ffffff",
+      "terminal.ansiBrightWhite": palette.textPrimary, // Usa textPrimary para consistência
 
       // --- WIDGETS E DIAGNÓSTICOS ---
       "editorHoverWidget.background": palette.backgroundSecondary,
@@ -253,9 +253,9 @@ export function generateTheme(
       "notebook.outputContainerBorderColor": palette.border,
 
       // Ícones de Status
-      "notebookStatusSuccessIcon.foreground": palette.gitAdded, // Verde
-      "notebookStatusErrorIcon.foreground": palette.error, // Vermelho
-      "notebookStatusRunningIcon.foreground": palette.warning, // Amarelo
+      "notebookStatusSuccessIcon.foreground": palette.gitAdded,
+      "notebookStatusErrorIcon.foreground": palette.error,
+      "notebookStatusRunningIcon.foreground": palette.warning,
     },
     tokenColors: [
       {
@@ -264,8 +264,8 @@ export function generateTheme(
         settings: { foreground: palette.textDisabled, fontStyle: "italic" },
       },
       {
-        name: "Strings, Constants",
-        scope: ["string", "constant"],
+        name: "Strings",
+        scope: ["string"],
         settings: { foreground: palette.accent3 },
       },
       {

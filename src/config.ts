@@ -37,28 +37,28 @@ export const config = {
    */
   themes: [
     {
-      name: "The Herta Theme",
-      displayName: "The Herta Theme (Dark)",
+      name: "Holographic Purple Theme",
+      displayName: "Holographic Purple Theme (Dark)",
       type: "dark" as const,
-      fileName: "The Herta Theme-dark.json",
+      fileName: "Holographic Purple Theme-dark.json",
     },
     {
-      name: "The Herta Theme Light",
-      displayName: "The Herta Theme Light",
+      name: "Holographic Purple Theme Light",
+      displayName: "Holographic Purple Theme Light",
       type: "light" as const,
-      fileName: "The Herta Theme-light.json",
+      fileName: "Holographic Purple Theme-light.json",
     },
     {
-      name: "The Herta Theme Pastel",
-      displayName: "The Herta Theme Pastel (Dark)",
+      name: "Holographic Purple Theme Pastel",
+      displayName: "Holographic Purple Theme Pastel (Dark)",
       type: "dark" as const,
-      fileName: "The Herta Theme-pastel-dark.json",
+      fileName: "Holographic Purple Theme-pastel-dark.json",
     },
     {
-      name: "The Herta Theme Pastel Light",
-      displayName: "The Herta Theme Pastel Light",
+      name: "Holographic Purple Theme Pastel Light",
+      displayName: "Holographic Purple Theme Pastel Light",
       type: "light" as const,
-      fileName: "The Herta Theme-pastel-light.json",
+      fileName: "Holographic Purple Theme-pastel-light.json",
     },
   ] as const,
 } as const;

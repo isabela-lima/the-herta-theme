@@ -46,19 +46,19 @@ jobs:
       - name: Validate generated themes
         run: |
           # Check if all theme files exist
-          if [ ! -f "themes/The Herta Theme-dark.json" ]; then
+          if [ ! -f "themes/Holographic Purple Theme-dark.json" ]; then
             echo "❌ Missing dark theme file"
             exit 1
           fi
-          if [ ! -f "themes/The Herta Theme-light.json" ]; then
+          if [ ! -f "themes/Holographic Purple Theme-light.json" ]; then
             echo "❌ Missing light theme file"
             exit 1
           fi
-          if [ ! -f "themes/The Herta Theme-pastel-dark.json" ]; then
+          if [ ! -f "themes/Holographic Purple Theme-pastel-dark.json" ]; then
             echo "❌ Missing pastel dark theme file"
             exit 1
           fi
-          if [ ! -f "themes/The Herta Theme-pastel-light.json" ]; then
+          if [ ! -f "themes/Holographic Purple Theme-pastel-light.json" ]; then
             echo "❌ Missing pastel light theme file"
             exit 1
           fi
@@ -69,10 +69,10 @@ jobs:
           const path = require('path');
 
           const themeFiles = [
-            'themes/The Herta Theme-dark.json',
-            'themes/The Herta Theme-light.json',
-            'themes/The Herta Theme-pastel-dark.json',
-            'themes/The Herta Theme-pastel-light.json'
+            'themes/Holographic Purple Theme-dark.json',
+            'themes/Holographic Purple Theme-light.json',
+            'themes/Holographic Purple Theme-pastel-dark.json',
+            'themes/Holographic Purple Theme-pastel-light.json'
           ];
 
           for (const themeFile of themeFiles) {
@@ -174,6 +174,6 @@ jobs:
       - name: Upload VSIX artifact
         uses: actions/upload-artifact@v4
         with:
-          name: the-herta-theme-vsix
+          name: holographic-purple-theme-vsix
           path: "*.vsix"
           retention-days: 30

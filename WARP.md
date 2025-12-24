@@ -4,7 +4,7 @@ This file provides guidance to WARP (warp.dev) when working with code in this re
 
 ## Project Overview
 
-The Herta Theme is a VS Code color theme extension inspired by Herta from Honkai: Star Rail. The project generates both dark and light themes programmatically using TypeScript, featuring a comprehensive color palette that includes support for syntax highlighting, UI elements, terminal colors, and Jupyter Notebooks.
+Holographic Purple Theme is a VS Code color theme extension featuring a holographic color palette with purple, cyan, and magenta accents. The project generates both dark and light themes programmatically using TypeScript, featuring a comprehensive color palette that includes support for syntax highlighting, UI elements, terminal colors, and Jupyter Notebooks.
 
 ## Development Commands
 
@@ -59,9 +59,9 @@ npm install
 - **Primary Colors**: Background layers (primary, secondary, tertiary) and borders
 - **Text Hierarchy**: Primary text, secondary text, and disabled text
 - **Accent Colors**:
-  - `accent1` (Purple - Herta): Main theme color for keywords, status bar
+  - `accent1` (Purple): Main theme color for keywords, status bar
   - `accent2` (Cyan - Holographic): Secondary accent for functions, focus elements
-  - `accent3` (Magenta - Kururin): Tertiary accent for strings, cursor
+  - `accent3` (Magenta): Tertiary accent for strings, cursor
 - **Status Colors**: Git colors (added, modified, deleted), error, warning
 
 **Type Definitions** (`types.d.ts`):
@@ -74,8 +74,8 @@ npm install
 
 ```
 themes/
-├── The Herta Theme-dark.json    # Generated dark theme
-└── The Herta Theme-light.json   # Generated light theme
+├── Holographic Purple Theme-dark.json    # Generated dark theme
+└── Holographic Purple Theme-light.json   # Generated light theme
 
 src/
 ├── index.ts                     # Main entry point
@@ -103,14 +103,14 @@ package.json                     # Extension manifest and dependencies
 
 - Uses semantic color naming for maintainability
 - Consistent contrast ratios between light and dark themes
-- Holographic/futuristic aesthetic matching Herta's character design
+- Holographic/futuristic aesthetic with modern design
 - Carefully balanced color relationships for readability
 
 ### Extension Development
 
 **VS Code Integration**:
 
-- Contributes two themes: "The Herta" (dark) and "The Herta Light"
+- Contributes four themes: "Holographic Purple" (dark), "Holographic Purple Light", "Holographic Purple Pastel" (dark), and "Holographic Purple Pastel Light"
 - Uses standard VS Code theme contribution points
 - Includes launch configuration for extension debugging
 

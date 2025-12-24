@@ -294,7 +294,7 @@ export function validatePalette(
  * - tokenColors: array of token color definitions
  *
  * @param {ColorTheme} theme - The theme object to validate
- * @param {string} themeName - Name of the theme for error messages (e.g., "The Herta Theme (Dark)")
+ * @param {string} themeName - Name of the theme for error messages (e.g., "Holographic Purple Theme (Dark)")
  * @throws {Error} If theme structure is invalid (missing required fields or wrong types)
  *
  * @example
