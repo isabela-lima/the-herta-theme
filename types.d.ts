@@ -1,16 +1,16 @@
-interface TokenSettings {
+export interface TokenSettings {
   foreground?: string;
   background?: string;
   fontStyle?: string;
 }
 
-interface TokenColor {
+export interface TokenColor {
   name?: string;
   scope: string | string[];
   settings: TokenSettings;
 }
 
-interface WorkbenchColors {
+export interface WorkbenchColors {
   "activityBar.activeBackground"?: string;
   "activityBar.activeBorder"?: string;
   "activityBar.activeFocusBorder"?: string;
@@ -637,7 +637,7 @@ interface WorkbenchColors {
   "notebookStatusRunningIcon.foreground"?: string;
 }
 
-interface ColorTheme {
+export interface ColorTheme {
   name: string;
   type: "dark" | "light";
   colors: WorkbenchColors;

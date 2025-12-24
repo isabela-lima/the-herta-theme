@@ -1,14 +1,14 @@
 {
-  "name": "the-herta-theme",
-  "displayName": "The Herta Theme",
+  "name": "holographic-purple-theme",
+  "displayName": "Holographic Purple Theme",
   "type": "module",
-  "description": "A Honkai: Star Rail inspired theme based on The Herta",
+  "description": "A beautiful holographic purple theme for VS Code featuring purple, cyan, and magenta accents with a futuristic aesthetic",
   "version": "1.0.0",
   "publisher": "isabela-lima",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/isabela-lima/the-herta-theme.git"
+    "url": "https://github.com/isabela-lima/holographic-purple-theme.git"
   },
   "engines": {
     "vscode": "^1.103.0"
@@ -19,36 +19,67 @@
   "contributes": {
     "themes": [
       {
-        "label": "The Herta",
+        "label": "Holographic Purple",
         "uiTheme": "vs-dark",
-        "path": "./themes/The Herta Theme-dark.json"
+        "path": "./themes/Holographic Purple Theme-dark.json"
       },
       {
-        "label": "The Herta Light",
+        "label": "Holographic Purple Light",
         "uiTheme": "vs",
-        "path": "./themes/The Herta Theme-light.json"
+        "path": "./themes/Holographic Purple Theme-light.json"
       },
       {
-        "label": "The Herta Pastel",
+        "label": "Holographic Purple Pastel",
         "uiTheme": "vs-dark",
-        "path": "./themes/The Herta Theme-pastel-dark.json"
+        "path": "./themes/Holographic Purple Theme-pastel-dark.json"
       },
       {
-        "label": "The Herta Pastel Light",
+        "label": "Holographic Purple Pastel Light",
         "uiTheme": "vs",
-        "path": "./themes/The Herta Theme-pastel-light.json"
+        "path": "./themes/Holographic Purple Theme-pastel-light.json"
       }
     ]
   },
   "scripts": {
-    "build": "ts-node build-theme.ts",
-    "dev": "nodemon --watch build-theme.ts --exec \"npm run build\""
+    "build": "tsx src/index.ts",
+    "dev": "nodemon --watch src --exec \"npm run build\"",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"*.ts\" \"*.json\" \"*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"*.ts\" \"*.json\" \"*.md\"",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "package": "vsce package",
+    "validate": "npm run type-check && npm run lint && npm run format:check && npm run build",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@types/node": "^24.2.0",
     "@types/vscode": "^1.102.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
     "nodemon": "^3.1.10",
+    "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "tsx": "^4.7.0",
+    "typescript": "^5.9.2",
+    "vitest": "^2.1.0"
   }
 }

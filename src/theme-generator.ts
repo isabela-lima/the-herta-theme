@@ -1,89 +1,33 @@
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import type { ColorTheme } from "../types.d.js";
+import type { ColorPalette } from "./palettes.js";
 
-const darkPalette = {
-  backgroundPrimary: "#252230", // Fundo principal do editor (mais claro)
-  backgroundSecondary: "#1f1d2b", // Fundos de painéis, abas ativas (mais claro)
-  backgroundTertiary: "#2d2a3f", // Hovers de listas (mais claro)
-  border: "#1f1d2b", // Bordas sutis
-
-  textPrimary: "#e5e0ff", // Texto principal, variáveis (mais claro para melhor contraste)
-  textSecondary: "#9a98aa", // Texto de menor importância (mais claro)
-  textDisabled: "#6a688a", // Texto bem apagado, comentários, pontuação (mais claro)
-
-  accent1: "#a29bfe", // Roxo Herta - Destaque principal (mais sutil)
-  accent2: "#7dd3fc", // Azul ciano - Destaque secundário (melhor contraste)
-  accent3: "#B464A4", // Pearly Purple - Roxo pastel suave da Herta
-
-  gitAdded: "#55efc4", // Verde para Git
-  gitModified: "#7dd3fc", // Azul para Git
-  gitDeleted: "#B464A4", // Pearly Purple para Git
-  error: "#ff6b81", // Vermelho para erros
-  warning: "#feca57", // Amarelo para avisos
-};
-
-const lightPalette = {
-  backgroundPrimary: "#f0f2f8",
-  backgroundSecondary: "#e6eaf2",
-  backgroundTertiary: "#dce1ea",
-  border: "#dce1ea",
-
-  textPrimary: "#2c3e50",
-  textSecondary: "#7f8c8d",
-  textDisabled: "#95a5a6",
-
-  accent1: "#8c7ae6", // Roxo Herta (versão light)
-  accent2: "#0ea5e9", // Azul ciano (versão light) - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
-
-  gitAdded: "#16a085",
-  gitModified: "#0ea5e9", // Azul para Git
-  gitDeleted: "#B464A4",
-  error: "#c0392b",
-  warning: "#f39c12",
-};
-
-const pastelDarkPalette = {
-  backgroundPrimary: "#2f2d3d", // Mais claro para melhor luminosidade
-  backgroundSecondary: "#2f2d43", // Mais claro
-  backgroundTertiary: "#3f3d53", // Mais claro
-  border: "#2f2d43",
-  textPrimary: "#e5e0ff",
-  textSecondary: "#9a98aa",
-  textDisabled: "#6a688a",
-  accent1: "#b8b2ff", // Roxo pastel suave
-  accent2: "#9dd5f5", // Azul ciano pastel - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
-  gitAdded: "#75ffd4",
-  gitModified: "#9dd5f5", // Azul para Git
-  gitDeleted: "#B464A4",
-  error: "#ff8ba1",
-  warning: "#fed977",
-};
-
-const pastelLightPalette = {
-  backgroundPrimary: "#f5f7fb",
-  backgroundSecondary: "#eef1f7",
-  backgroundTertiary: "#e8ecf3",
-  border: "#e8ecf3",
-  textPrimary: "#3c4e60",
-  textSecondary: "#8f9d9e",
-  textDisabled: "#a5b5b6",
-  accent1: "#9c8af6", // Roxo pastel suave
-  accent2: "#38bdf8", // Azul ciano pastel - melhor contraste
-  accent3: "#B464A4", // Pearly Purple - mantém a cor que você gostou
-  gitAdded: "#26b095",
-  gitModified: "#38bdf8", // Azul para Git
-  gitDeleted: "#B464A4",
-  error: "#d0493b",
-  warning: "#f3ac22",
-};
-
-function generateTheme(
+/**
+ * Generates a complete VS Code theme from a color palette.
+ * Creates a comprehensive theme configuration including:
+ * - Workbench colors (editor, sidebar, status bar, etc.)
+ * - Syntax highlighting token colors
+ * - Terminal ANSI colors
+ * - Git decoration colors
+ * - Jupyter Notebook support
+ * - Extension integrations (Rainbow CSV)
+ *
+ * @param {string} name - Display name of the theme (shown in VS Code theme picker)
+ * @param {"dark" | "light"} type - Theme type, either "dark" or "light"
+ * @param {ColorPalette} palette - Color palette object containing all theme colors
+ * @returns {ColorTheme} Complete ColorTheme object ready to be written as JSON
+ *
+ * @example
+ * // Generate a dark theme
+ * const darkTheme = generateTheme("Holographic Purple Theme", "dark", darkPalette);
+ *
+ * @example
+ * // Generate a light theme
+ * const lightTheme = generateTheme("Holographic Purple Theme Light", "light", lightPalette);
+ */
+export function generateTheme(
   name: string,
   type: "dark" | "light",
-  palette: typeof darkPalette
+  palette: ColorPalette
 ): ColorTheme {
   const highContrastText = type === "dark" ? "#1a1823" : "#FFFFFF";
 
@@ -169,7 +113,7 @@ function generateTheme(
       "terminal.ansiRed": palette.error,
       "terminal.ansiGreen": palette.gitAdded,
       "terminal.ansiYellow": palette.warning,
-      "terminal.ansiBlue": "#54a0ff",
+      "terminal.ansiBlue": palette.accent2, // Usa accent2 para consistência
       "terminal.ansiMagenta": palette.accent1,
       "terminal.ansiCyan": palette.accent2,
       "terminal.ansiWhite": palette.textPrimary,
@@ -177,10 +121,10 @@ function generateTheme(
       "terminal.ansiBrightRed": palette.error,
       "terminal.ansiBrightGreen": palette.gitAdded,
       "terminal.ansiBrightYellow": palette.warning,
-      "terminal.ansiBrightBlue": "#74b9ff", // Mantendo um azul padrão
+      "terminal.ansiBrightBlue": palette.accent2, // Versão bright usa accent2 (já é brilhante)
       "terminal.ansiBrightMagenta": palette.accent3,
       "terminal.ansiBrightCyan": palette.accent2,
-      "terminal.ansiBrightWhite": "#ffffff",
+      "terminal.ansiBrightWhite": palette.textPrimary, // Usa textPrimary para consistência
 
       // --- WIDGETS E DIAGNÓSTICOS ---
       "editorHoverWidget.background": palette.backgroundSecondary,
@@ -309,9 +253,9 @@ function generateTheme(
       "notebook.outputContainerBorderColor": palette.border,
 
       // Ícones de Status
-      "notebookStatusSuccessIcon.foreground": palette.gitAdded, // Verde
-      "notebookStatusErrorIcon.foreground": palette.error, // Vermelho
-      "notebookStatusRunningIcon.foreground": palette.warning, // Amarelo
+      "notebookStatusSuccessIcon.foreground": palette.gitAdded,
+      "notebookStatusErrorIcon.foreground": palette.error,
+      "notebookStatusRunningIcon.foreground": palette.warning,
     },
     tokenColors: [
       {
@@ -320,8 +264,8 @@ function generateTheme(
         settings: { foreground: palette.textDisabled, fontStyle: "italic" },
       },
       {
-        name: "Strings, Constants",
-        scope: ["string", "constant"],
+        name: "Strings",
+        scope: ["string"],
         settings: { foreground: palette.accent3 },
       },
       {
@@ -345,9 +289,14 @@ function generateTheme(
         settings: { foreground: palette.accent2 },
       },
       {
-        name: "Variables & Parameters",
-        scope: ["variable"],
-        settings: { foreground: palette.textPrimary },
+        name: "Primitive Types",
+        scope: [
+          "support.type.primitive",
+          "support.type.primitive.ts",
+          "support.type.builtin",
+          "support.type.builtin.ts",
+        ],
+        settings: { foreground: palette.accent2 },
       },
       {
         name: "Object Keys, Property Names",
@@ -355,8 +304,14 @@ function generateTheme(
           "meta.object-literal.key",
           "support.type.property-name",
           "variable.other.property",
+          "variable.other.object.property",
         ],
         settings: { foreground: palette.accent1 },
+      },
+      {
+        name: "Variables & Parameters",
+        scope: ["variable"],
+        settings: { foreground: palette.textPrimary },
       },
       {
         name: "Variable Parameters",
@@ -510,58 +465,3 @@ function generateTheme(
   };
   return theme;
 }
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Generate all themes
-const darkTheme = generateTheme("The Herta Theme", "dark", darkPalette);
-const lightTheme = generateTheme(
-  "The Herta Theme Light",
-  "light",
-  lightPalette
-);
-const pastelDarkTheme = generateTheme(
-  "The Herta Theme Pastel",
-  "dark",
-  pastelDarkPalette
-);
-const pastelLightTheme = generateTheme(
-  "The Herta Theme Pastel Light",
-  "light",
-  pastelLightPalette
-);
-
-// Define all theme paths
-const darkThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-dark.json"
-);
-const lightThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-light.json"
-);
-const pastelDarkThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-pastel-dark.json"
-);
-const pastelLightThemePath = path.join(
-  __dirname,
-  "themes",
-  "The Herta Theme-pastel-light.json"
-);
-
-// Write all theme files
-fs.writeFileSync(darkThemePath, JSON.stringify(darkTheme, null, 2));
-fs.writeFileSync(lightThemePath, JSON.stringify(lightTheme, null, 2));
-fs.writeFileSync(pastelDarkThemePath, JSON.stringify(pastelDarkTheme, null, 2));
-fs.writeFileSync(
-  pastelLightThemePath,
-  JSON.stringify(pastelLightTheme, null, 2)
-);
-
-console.log(
-  "Temas Dark, Light, Pastel Dark e Pastel Light da Herta construídos com sucesso! ✨"
-);
