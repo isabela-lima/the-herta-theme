@@ -4,7 +4,7 @@ All notable changes to the "holographic-purple-theme" extension will be document
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [1.0.0] - 2024-12-XX
+## [1.0.0] - Unreleased
 
 ### Added
 
