@@ -17,7 +17,7 @@ import {
 /**
  * Main build function with error handling
  */
-function buildThemes(): void {
+export function buildThemes(): void {
   try {
     console.log("🎨 Starting theme build process...\n");
 
@@ -94,5 +94,8 @@ function buildThemes(): void {
   }
 }
 
-// Execute build
-buildThemes();
+// Execute build when run directly (not when imported for testing)
+// Check if this module is being run directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  buildThemes();
+}
