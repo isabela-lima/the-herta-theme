@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import type { ColorPalette } from "../types.js";
+import type { ColorPalette } from "../types.d.js";
 
 // Mock all dependencies
 vi.mock("./config.js", () => ({
@@ -96,12 +96,15 @@ describe("index - buildThemes integration", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    vi.resetModules(); // Reset module cache to ensure clean state
+    // Reset module cache to ensure clean state between tests
+    // This is necessary to prevent state leakage when testing module-level code
+    vi.resetModules();
     consoleLogSpy = vi.spyOn(console, "log").mockImplementation(() => {});
     consoleErrorSpy = vi.spyOn(console, "error").mockImplementation(() => {});
-    processExitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
+    // Mock process.exit to prevent test termination and allow assertions on exit behavior
+    processExitSpy = vi.spyOn(process, "exit").mockImplementation((() => {
       throw new Error("process.exit called");
-    });
+    }) as never);
   });
 
   afterEach(() => {
