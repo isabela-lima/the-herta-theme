@@ -6,7 +6,7 @@ A beautiful VS Code theme featuring a holographic color palette with purple, cya
 
 ## ✨ Features
 
-- **🎨 Dual Themes**: Dark and Light variants for any preference
+- **🎨 Four Theme Variants**: Dark, Light, Pastel Dark, and Pastel Light for any preference
 - **🌈 Holographic Palette**: Purple, cyan, and magenta accents with a futuristic design
 - **📝 Comprehensive Coverage**: Full syntax highlighting for multiple programming languages
 - **🎯 Smart Color System**: Semantic color naming for consistent theming across all UI elements
