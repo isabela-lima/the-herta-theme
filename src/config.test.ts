@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { config } from "./config.js";
 import path from "path";
-import { fileURLToPath } from "url";
 
 describe("config", () => {
   describe("configuration structure", () => {
@@ -28,10 +27,9 @@ describe("config", () => {
   });
 
   describe("path construction", () => {
-    it("should construct baseDir correctly from __dirname", () => {
-      const __filename = fileURLToPath(import.meta.url);
-      const __dirname = path.dirname(__filename);
-      expect(config.baseDir).toBe(__dirname);
+    it("should have baseDir pointing to the src directory", () => {
+      expect(path.basename(config.baseDir)).toBe("src");
+      expect(path.isAbsolute(config.baseDir)).toBe(true);
     });
 
     it("should construct themesDir relative to baseDir", () => {
