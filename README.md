@@ -22,7 +22,7 @@ A beautiful VS Code theme featuring a holographic color palette with purple, cya
 - **Primary Purple**: `#a29bfe` - Keywords, status bar, main accents
 - **Holographic Cyan**: `#7dd3fc` - Functions, focus elements, info
 - **Accent Magenta**: `#FF6B9D` - Strings, cursor, highlights
-- **Background Layers**: Deep space purples (`#1a1823`, `#161420`, `#2a2839`)
+- **Background Layers**: Deep space purples (`#252230`, `#1f1d2b`, `#2d2a3f`)
 - **Text Hierarchy**: From bright lavender to subtle grays
 
 ### Light Theme
